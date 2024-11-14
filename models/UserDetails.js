@@ -18,4 +18,4 @@ const UserDetailSchema = new mongoose.Schema(
   }
 );
 
-mongoose.model("UserInfo", UserDetailSchema);
+module.exports = mongoose.model("UserInfo", UserDetailSchema);
