@@ -48,4 +48,26 @@ router.get("/get-pet/:id", async (req, res) => {
   }
 });
 
+// Route to get all unadopted pets
+router.get('/unadopted', async (req, res) => {
+  try {
+    const pets = await Pet.find({ isAdopted: false });
+    res.json(pets);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Route to mark a pet as adopted
+router.put('/adopt/:petId', async (req, res) => {
+  try {
+    const pet = await Pet.findById(req.params.petId);
+    pet.isAdopted = true;
+    await pet.save();
+    res.json({ message: 'Pet adopted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = router;
