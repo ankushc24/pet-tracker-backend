@@ -6,7 +6,7 @@ const PetSchema = new mongoose.Schema(
     pet_id: {
       type: String,
       required: true,
-      //unique: true, // Ensure each pet has a unique ID
+      // unique: true, // Ensure each pet has a unique ID
     },
     petName: {
       type: String,
@@ -27,6 +27,10 @@ const PetSchema = new mongoose.Schema(
     isAdopted: {
       type: Boolean,
       default: false, // Default to false, indicating the pet is not adopted
+    },
+    vaccinated: {
+      type: Boolean,
+      default: false, // Default to false, indicating the pet is not vaccinated
     },
   },
   {
